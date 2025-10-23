@@ -43,7 +43,7 @@ const AddTodoForm = ({ addTodo }) => {
         <select
           value={priority}
           onChange={(e) => setPriority(e.target.value)}
-          className={`w-full p-2 border border-gray-300 rounded-md ${
+          className={`appearance-none custom-select w-full p-2 border border-gray-300 rounded-md ${
             priorityOptions.find((p) => p.value === priority)?.color
           }`}
         >
