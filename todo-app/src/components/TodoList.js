@@ -26,7 +26,7 @@ const TodoList = () => {
     <div className="max-w-md mx-auto mt-8">
       <h1 className="mb-4 text-2xl font-bold text-center">Todo List</h1>
       <AddTodoForm addTodo={addTodo} />
-      <Filter filter={filter} setFilter={setFilter} />
+      {todos.length > 0 && <Filter filter={filter} setFilter={setFilter} />}
       <div>
         {filteredTodos.map((todo) => (
           <TodoItem key={todo.id} todo={todo} removeTodo={removeTodo} />
