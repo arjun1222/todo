@@ -1,32 +1,28 @@
 import React from 'react';
 
-const Filter = ({ setFilter }) => {
+const Filter = ({ filter, setFilter }) => {
+  const filters = [
+    { value: 'all', color: 'bg-blue-500', borderColor: 'border-blue-500' },
+    { value: 'low', color: 'bg-green-500', borderColor: 'border-green-500' },
+    { value: 'medium', color: 'bg-yellow-500', borderColor: 'border-yellow-500' },
+    { value: 'high', color: 'bg-red-500', borderColor: 'border-red-500' },
+  ];
+
   return (
     <div className="flex justify-center my-4">
-      <button
-        onClick={() => setFilter('all')}
-        className="px-4 py-2 mx-2 text-white bg-blue-500 rounded-md hover:bg-blue-600"
-      >
-        All
-      </button>
-      <button
-        onClick={() => setFilter('low')}
-        className="px-4 py-2 mx-2 text-white bg-green-500 rounded-md hover:bg-green-600"
-      >
-        Low
-      </button>
-      <button
-        onClick={() => setFilter('medium')}
-        className="px-4 py-2 mx-2 text-white bg-yellow-500 rounded-md hover:bg-yellow-600"
-      >
-        Medium
-      </button>
-      <button
-        onClick={() => setFilter('high')}
-        className="px-4 py-2 mx-2 text-white bg-red-500 rounded-md hover:bg-red-600"
-      >
-        High
-      </button>
+      {filters.map(({ value, color, borderColor }) => (
+        <button
+          key={value}
+          onClick={() => setFilter(value)}
+          className={`px-4 py-2 mx-2 rounded-md ${
+            filter === value
+              ? `${color} text-white`
+              : `border ${borderColor} text-gray-700`
+          }`}
+        >
+          {value.charAt(0).toUpperCase() + value.slice(1)}
+        </button>
+      ))}
     </div>
   );
 };
